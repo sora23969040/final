@@ -1,0 +1,29 @@
+<html>
+  <head>
+    <title>測試</title>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+    <script>
+      $(document).ready(function(){
+        var user,pass,text;
+        $("#submit").click(function(){
+          user=$("#user").val();
+          pass=$("#password").val();
+          text=$("#text").val()
+          $.post("http://localhost:5000/login",{user: user,password: pass,text: text}, function(data){
+            if(data==='done')
+              {
+                alert("login success");
+              }
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>測試伺服端登入系統</h1>
+    用戶名稱<input type="TEXT" id="user" size="40"><br>
+    密碼<input type="password" id="password" size="40"><br>
+    想傳遞的訊息<input type="text" id="text"><br>
+    <input type="button" id="submit" value="登入並傳送訊息">
+  </body>
+</html>
